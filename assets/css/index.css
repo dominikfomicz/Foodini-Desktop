@@ -1,0 +1,29 @@
+html, body {
+  width: 75px;
+  height: 75px;
+}
+
+html .no-button, body .no-button {
+  background: transparent;
+  border: none;
+}
+
+html .no-button.menu-open-button, body .no-button.menu-open-button {
+  background: #ffc107;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  color: white;
+  text-align: center;
+}
+
+html .no-button.menu-open-button img, body .no-button.menu-open-button img {
+  width: 45px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=index.css.map */
