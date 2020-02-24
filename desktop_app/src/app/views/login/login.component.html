@@ -1,0 +1,23 @@
+<div class="col-12">
+	<form class="text-center p-5 w-100 d-flex align-items-center justify-content-center" (submit)="login()">
+		<!-- <img src="assets/logo2_png.png" class="w-50 mb-5" alt=""> -->
+		<!-- <div class="md-form">
+			<input mdbInput type="text" name="username" class="form-control" [(ngModel)]="username">
+			<label for="login" class="">Login</label>
+		</div>
+		<div class="md-form">
+			<input mdbInput type="password" name="password" class="form-control" [(ngModel)]="password">
+			<label for="password" class="">Hasło</label>
+		</div> -->
+		<img src="assets/logo2_png.png" class="mb-5" alt="">
+		<mat-form-field>
+			<input matInput placeholder="Login" type="text" name="username" class="form-control" [(ngModel)]="username">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Haslo" type="password" name="password" class="form-control" [(ngModel)]="password">
+		</mat-form-field>
+		<!-- <button mat-button type="submitz">Click me!</button> -->
+
+		<button mat-button class="btn btn-primary z-depth-0 my-4 waves-effect" type="submit">Zaloguj</button>
+	</form>
+</div>
