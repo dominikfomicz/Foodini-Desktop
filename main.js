@@ -77,5 +77,5 @@ exports.openWindow = (filename) => {
     });
     win.setMenu(null);
     win.webContents.openDevTools();
-    win.loadURL(`file://${__dirname}/desktop_app/dist/` + filename + `.html`);
+    win.loadURL('http://repo.foodini.net.pl/desktop/');
 }

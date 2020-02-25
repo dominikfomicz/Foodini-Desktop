@@ -1,2 +1,0 @@
-# foodini-manager
-
