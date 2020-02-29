@@ -8,6 +8,7 @@ const screen = electron.screen;
 //     electron: require(`${__dirname}/node_modules/electron`)
 // });
 let win;
+let win1;
 
 function createWindow() {
   let display = screen.getPrimaryDisplay();
@@ -21,7 +22,7 @@ function createWindow() {
 				resizable: true,
 				frame: false,
 				transparent: true,
-				movable: true,
+				movable: false,
 				alwaysOnTop: true,
 				webPreferences: {
 					nodeIntegration: true
@@ -59,23 +60,43 @@ exports.openWindow = (filename) => {
   let display = screen.getPrimaryDisplay();
 	let width = display.bounds.width;
 	let height = display.bounds.height;
-	let win = new BrowserWindow(
-		{
-      width: width,
-      height: height,
-      x: 0,
-      y: 0,
-      resizable: true,
-      frame: true,
-      transparent: false,
-      movable: true,
-      alwaysOnTop: false,
-      webPreferences: {
-        nodeIntegration: true,
-        webviewTag: true
-      }
+
+
+    // win.webContents.openDevTools();
+    let count = BrowserWindow.getAllWindows()
+    .filter(b => {
+      return b.isVisible()
+    })
+    .length
+
+    if (count <= 1) {
+      win1 = new BrowserWindow(
+        {
+          width: width,
+          height: height,
+          x: 0,
+          y: 0,
+          resizable: true,
+          frame: true,
+          transparent: false,
+          movable: true,
+          alwaysOnTop: false,
+          webPreferences: {
+            nodeIntegration: true,
+            webviewTag: true
+          }
+      });
+      win1.setMenu(null);
+      win1.loadURL('http://repo.foodini.net.pl/desktop/');
+    } else if (count === 2) {
+      win1.hide();
+    } else {
+      win1.show();
+    }
+
+    win1.on('closed', () => {
+      win1 = null
     });
-    win.setMenu(null);
-    win.webContents.openDevTools();
-    win.loadURL('http://repo.foodini.net.pl/desktop/');
+    console.log(count);
+
 }

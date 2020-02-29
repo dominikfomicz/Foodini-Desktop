@@ -13,10 +13,14 @@ html, body {
 			position: absolute;
 			color: white;
 			text-align: center;
+			&:focus, &:active {
+				border: none;
+			}
+			
 			img {
-				width: 45px;
+				width: 65px;
 				position: absolute;
-				top: 45%;
+				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 			}
