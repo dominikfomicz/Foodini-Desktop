@@ -16,13 +16,39 @@ html, body {
 			&:focus, &:active {
 				border: none;
 			}
-			
+
 			img {
 				width: 65px;
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+			}
+		}
+	}
+	div	{
+		span {
+			-webkit-app-region: drag;
+			&.grippy {
+				content: '....';
+				width: 15px;
+				height: 20px;
+				display: inline-block;
+				overflow: hidden;
+				line-height: 5px;
+				padding: 5px 4px;
+				cursor: move;
+				vertical-align: middle;
+				margin-top: -.7em;
+				margin-right: .3em;
+				font-size: 15px;
+				font-family: sans-serif;
+				letter-spacing: 2px;
+				color: #5C2483;
+				text-shadow: 1px 0 1px white;
+				&::after {
+					content: '... ... ... ...';
+				}
 			}
 		}
 	}

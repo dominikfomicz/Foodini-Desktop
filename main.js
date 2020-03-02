@@ -15,15 +15,16 @@ function createWindow() {
 	let width = display.bounds.width;
 	let height = display.bounds.height;
   win = new BrowserWindow({
-        width: 100,
+        width: 120,
 				height: 100,
-        x: width - 100,
+        x: width - 120,
         y: height / 2,
-				resizable: true,
+				resizable: false,
 				frame: false,
 				transparent: true,
-				movable: false,
-				alwaysOnTop: true,
+				movable: true,
+        alwaysOnTop: true,
+        icon: __dirname + '/assets/logo.png',
 				webPreferences: {
 					nodeIntegration: true
 				}
@@ -35,7 +36,7 @@ function createWindow() {
 
 
   win.on('closed', () => {
-    win = null
+    win = null;
   });
 }
 
@@ -62,7 +63,6 @@ exports.openWindow = (filename) => {
 	let height = display.bounds.height;
 
 
-    // win.webContents.openDevTools();
     let count = BrowserWindow.getAllWindows()
     .filter(b => {
       return b.isVisible()
@@ -72,31 +72,43 @@ exports.openWindow = (filename) => {
     if (count <= 1) {
       win1 = new BrowserWindow(
         {
+          fullscreen: true,
           width: width,
           height: height,
           x: 0,
           y: 0,
-          resizable: true,
-          frame: true,
+          resizable: false,
+          frame: false,
           transparent: false,
-          movable: true,
+          movable: false,
           alwaysOnTop: false,
+          icon: __dirname + '/assets/logo.png',
           webPreferences: {
             nodeIntegration: true,
             webviewTag: true
           }
       });
       win1.setMenu(null);
-      win1.loadURL('http://repo.foodini.net.pl/desktop/');
-    } else if (count === 2) {
-      win1.hide();
-    } else {
-      win1.show();
+      win1.loadURL('http://localhost:4200'); //http://repo.foodini.net.pl/desktop/
+      win1.on('closed', () => {
+        win1 = null;
+      });
+    }
+    else if (count === 2) {
+      if(win1.isMinimized()){
+        win1.restore();
+      }else{
+        win1.minimize();
+      }
+    //   win1.minimize();
+    //   console.log(win1);
+    //   // win1.restore();
+    // } else {
+    //   win1.restore();
     }
 
-    win1.on('closed', () => {
-      win1 = null
-    });
+    win1.webContents.openDevTools();
     console.log(count);
+
 
 }

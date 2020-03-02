@@ -2,10 +2,12 @@ html, body {
   width: 75px;
   height: 75px;
 }
+
 html .no-button, body .no-button {
   background: transparent;
   border: none;
 }
+
 html .no-button.menu-open-button, body .no-button.menu-open-button {
   background: #ffc107;
   border-radius: 100%;
@@ -15,15 +17,44 @@ html .no-button.menu-open-button, body .no-button.menu-open-button {
   color: white;
   text-align: center;
 }
+
 html .no-button.menu-open-button:focus, html .no-button.menu-open-button:active, body .no-button.menu-open-button:focus, body .no-button.menu-open-button:active {
   border: none;
 }
+
 html .no-button.menu-open-button img, body .no-button.menu-open-button img {
   width: 65px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
+html div span, body div span {
+  -webkit-app-region: drag;
+}
+
+html div span.grippy, body div span.grippy {
+  content: '....';
+  width: 15px;
+  height: 20px;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 5px;
+  padding: 5px 4px;
+  cursor: move;
+  vertical-align: middle;
+  margin-top: -.7em;
+  margin-right: .3em;
+  font-size: 15px;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  color: #5C2483;
+  text-shadow: 1px 0 1px white;
+}
+
+html div span.grippy::after, body div span.grippy::after {
+  content: '... ... ... ...';
+}
 /*# sourceMappingURL=index.css.map */
