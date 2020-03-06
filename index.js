@@ -7,11 +7,11 @@ const draggableIcon = document.getElementById('grippy');
 const main = remote.require('./main.js');
 var i = 0;
 syncBtn.addEventListener('click', function(){
-    main.openWindow('index');
+    main.openWindow();
 });
 
-syncBtn.addEventListener('click', function(){
-});
+// syncBtn.addEventListener('click', function(){
+// });
 
 
 

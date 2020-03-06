@@ -22,7 +22,8 @@ function createWindow() {
 				resizable: false,
 				frame: false,
 				transparent: true,
-				movable: true,
+        movable: true,
+        useContentSize: true,
         alwaysOnTop: true,
         icon: __dirname + '/assets/logo.png',
 				webPreferences: {
@@ -34,10 +35,13 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.html`)
   // win.webContents.openDevTools();
 
-
-  win.on('closed', () => {
-    win = null;
-  });
+  win.setAlwaysOnTop(true, "screen-savier", 12);
+  win.setVisibleOnAllWorkspaces(true);
+  win.moveTop();
+  // mainWindow.setFullScreenable(false);
+  // win.on('closed', () => {
+  //   win = null;
+  // });
 }
 
 app.on('ready', createWindow);
@@ -56,8 +60,11 @@ app.on('activate', () => {
   }
 });
 
+
+// app.dock.hide();
+
 // create second window
-exports.openWindow = (filename) => {
+exports.openWindow = () => {
   let display = screen.getPrimaryDisplay();
 	let width = display.bounds.width;
 	let height = display.bounds.height;
@@ -82,14 +89,14 @@ exports.openWindow = (filename) => {
           transparent: false,
           movable: false,
           alwaysOnTop: false,
+          useContentSize: true,
           icon: __dirname + '/assets/logo.png',
           webPreferences: {
-            nodeIntegration: true,
-            webviewTag: true
+            nodeIntegration: true
           }
       });
       win1.setMenu(null);
-      win1.loadURL('http://localhost:4200'); //http://repo.foodini.net.pl/desktop/
+      win1.loadURL('http://repo.foodini.net.pl/desktop/');
       win1.on('closed', () => {
         win1 = null;
       });
@@ -106,9 +113,11 @@ exports.openWindow = (filename) => {
     // } else {
     //   win1.restore();
     }
-
-    win1.webContents.openDevTools();
-    console.log(count);
+    win1.setAlwaysOnTop(true, 'screen-savier', 10);
+    win1.setVisibleOnAllWorkspaces(true);
+    win.moveTop();
+    // win1.webContents.openDevTools();
+    // console.log(count);
 
 
 }
